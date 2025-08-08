@@ -5,83 +5,99 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Time Travelers Event Info</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 1rem;
-      background: #f8f9fa;
-      color: #333;
+    :root{
+      --bg:#0d1117;
+      --text:#c9d1d9;
+      --card:#161b22;
+      --muted:#8b949e;
+      --border:#30363d;
+      --shadow:rgba(0,0,0,.45);
+      --link:#58a6ff;
+      --link-hover:#79b8ff;
+      --accent:#cc0000; /* header red (kept) */
     }
 
-    .container {
-      max-width: 600px;
-      margin: auto;
+    * { box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      margin: 0; padding: 1rem;
+      background: var(--bg); color: var(--text);
     }
+
+    .container { max-width: 600px; margin: auto; }
 
     h1 {
       text-align: center;
-      color: #cc0000;
+      color: var(--accent);
+      margin: 0 0 1rem;
     }
 
     section {
-      background: #ffffff;
+      background: var(--card);
+      color: var(--text);
       padding: 1rem;
       margin-bottom: 1rem;
       border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 6px var(--shadow);
+      border: 1px solid var(--border);
     }
+
+    h2 { margin: 0 0 .5rem; }
+    h3 { margin: .6rem 0 .2rem; }
+    h4 { margin: .5rem 0 .3rem; color: var(--muted); }
 
     a {
-      color: #0066cc;
+      color: var(--link);
       text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: color .15s ease, border-color .15s ease;
     }
-
-    a:hover {
-      text-decoration: underline;
+    a:hover, a:focus-visible {
+      color: var(--link-hover);
+      border-color: var(--link-hover);
+      outline: none;
     }
 
     .link-list a {
       display: block;
       margin: 0.5rem 0;
+      border-bottom: none; /* keep list links clean */
     }
 
-    .division {
-      margin-bottom: 1rem;
-    }
+    .division { margin-bottom: 1rem; }
 
-    .division h4 {
-      margin: 0.5rem 0 0.3rem;
-    }
+    ul { padding-left: 1.2rem; margin: 0.2rem 0 0.8rem; }
 
-    ul {
-      padding-left: 1.2rem;
-      margin: 0.2rem 0 0.8rem;
+    /* Small screens */
+    @media (max-width: 420px){
+      body { padding: .75rem; }
+      section { padding: .9rem; }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Time Travelers Summer League Cup</h1>
+    <h1>Time Travelers August League Challenge</h1>
 
     <section class="link-list">
       <h2>Quick Links</h2>
-<a href="https://timetravelersonline.com/pages/pokemon-league-cup" target="_blank">📝 Registration</a>
-      <a href="pairings.html" target="_blank">🔗 Pairings</a>
-      <a href="standings.html" target="_blank">📊 Standings</a>
-      <a href="https://discord.gg/VCskmrVH" target="_blank">💬 Time Travelers Discord</a>
-      <a href="https://forms.gle/mbcM8xtzFN6HCDUk6">Post Event Survey</a>
+      <a href="https://timetravelersonline.com/collections/new-arrivals-and-spotlight-items/products/pokemon-august-league-challenge-entry-8-9-25-sat-12-30pm" target="_blank" rel="noopener">📝 Registration</a>
+      <a href="pairings.html" target="_blank" rel="noopener">🔗 Pairings</a>
+      <a href="standings.html" target="_blank" rel="noopener">📊 Standings</a>
+      <a href="https://discord.gg/kKskJVF5" target="_blank" rel="noopener">💬 Time Travelers Discord</a>
+      <a href="https://forms.gle/mbcM8xtzFN6HCDUk6" target="_blank" rel="noopener">✍️ Post Event Survey</a>
+      <a href="event_results.html" target="_blank" rel="noopener">🏆 Past Event Results</a>
     </section>
 
     <section>
       <h2>Event Info</h2>
       <p><strong>Location:</strong> 3116 12 Mile Road, Berkley, MI 48072</p>
-      <p><strong>Date:</strong> August 2, 2025</p>
+      <p><strong>Date:</strong> August 9, 2025</p>
       <p><strong>Time:</strong> Round 1 starts at 12:05 PM. Store opens at 11:00 AM.</p>
       <p>If your deck list is not submitted by 12:00 PM, you will not be paired and will receive a loss for Round 1.</p>
-      <p><strong>Rounds:</strong> 6 rounds of Swiss, best of one, 30 minutes + 3 turns. Top 8 cut, best of 3, 60 minutes + 3 turns.</p>
-      <p>Juniors/Seniors: 3 rounds of Swiss, best of one, 30 minutes + 3 turns.</p>
+      <p><strong>Rounds:</strong> X rounds of Swiss, best of one, 30 minutes + 3 turns.</p>
       <p><strong>Format:</strong> Regulation mark G onward. Black Bolt and White Flare legal.</p>
-      <p><strong>Staff:</strong> Conor Devins, Levi Wilson, Michael Holloway</p>
+      <p><strong>Staff:</strong> Conor Devins, Levi Wilson</p>
     </section>
 
     <section>
@@ -94,35 +110,35 @@
       <h2>Prizing</h2>
 
       <div class="division">
-        <h3>Masters Division</h3>
+        <h3>Master Division</h3>
         <h4>1st Place</h4>
         <ul>
-          <li>Champion Playmat</li>
-          <li>50 Championship Points</li>
-          <li>$240 Store Credit</li>
-          <li>10 Prize Packs</li>
+          <li>15 Championship Points</li>
+          <li>X Booster Packs</li>
+          <li>5 Prize Packs</li>
         </ul>
         <h4>2nd Place</h4>
         <ul>
-          <li>40 Championship Points</li>
-          <li>$130 Store Credit</li>
-          <li>8 Prize Packs</li>
+          <li>12 Championship Points</li>
+          <li>X Booster Packs</li>
+          <li>4 Prize Packs</li>
         </ul>
         <h4>3rd–4th Place</h4>
         <ul>
-          <li>32 Championship Points</li>
-          <li>$75 Store Credit</li>
-          <li>6 Prize Packs</li>
+          <li>10 Championship Points</li>
+          <li>X Booster Packs</li>
+          <li>3 Prize Packs</li>
         </ul>
         <h4>5th–8th Place</h4>
         <ul>
-          <li>25 Championship Points</li>
-          <li>$41 Store Credit</li>
-          <li>4 Prize Packs</li>
+          <li>8 Championship Points (if 14 or more Master players)</li>
+          <li>X Booster Packs</li>
+          <li>2 Prize Packs</li>
         </ul>
         <h4>9th–16th Place</h4>
         <ul>
-          <li>2 Prize Packs</li>
+          <li>6 Championship Points (if 25 or more Master players)</li>
+          <li>1 Prize Pack (if 25 or more Master players)</li>
         </ul>
       </div>
 
@@ -130,21 +146,20 @@
         <h3>Senior Division</h3>
         <h4>1st Place</h4>
         <ul>
-          <li>Champion Playmat</li>
-          <li>50 Championship Points</li>
-          <li>5 Booster Packs</li>
-          <li>3 Prize Packs</li>
+          <li>15 Championship Points</li>
+          <li>X Booster Packs</li>
+          <li>X Prize Packs</li>
         </ul>
         <h4>2nd Place</h4>
         <ul>
-          <li>40 Championship Points</li>
-          <li>3 Booster Packs</li>
-          <li>2 Prize Packs</li>
+          <li>12 Championship Points (if 4 or more Senior players)</li>
+          <li>X Booster Packs</li>
+          <li>X Prize Packs</li>
         </ul>
         <h4>3rd–4th Place</h4>
         <ul>
-          <li>2 Booster Packs</li>
-          <li>1 Prize Pack</li>
+          <li>X Booster Packs</li>
+          <li>X Prize Packs</li>
         </ul>
       </div>
 
@@ -152,20 +167,20 @@
         <h3>Junior Division</h3>
         <h4>1st Place</h4>
         <ul>
-          <li>Champion Playmat</li>
-          <li>50 Championship Points</li>
-          <li>3 Booster Packs</li>
-          <li>2 Prize Packs</li>
+          <li>15 Championship Points</li>
+          <li>X Booster Packs</li>
+          <li>X Prize Packs</li>
         </ul>
         <h4>2nd Place</h4>
         <ul>
-          <li>2 Booster Packs</li>
-          <li>1 Prize Pack</li>
+          <li>12 Championship Points (if 4 or more Junior players)</li>
+          <li>X Booster Packs</li>
+          <li>X Prize Packs</li>
         </ul>
-        <h4>3rd Place</h4>
+        <h4>3rd-4th Place</h4>
         <ul>
-          <li>1 Booster Pack</li>
-          <li>1 Prize Pack</li>
+          <li>X Booster Pack</li>
+          <li>X Prize Packs</li>
         </ul>
       </div>
     </section>
