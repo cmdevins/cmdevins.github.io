@@ -31,6 +31,23 @@
     .player { margin-top: 4px; font-weight: 600; font-size: 1.05rem; }
     .deck { margin-top: 2px; color: var(--subtext); font-size: 0.95rem; }
 
+    .back-btn {
+      display: inline-block;
+      margin-bottom: 8px;
+      padding: 6px 12px;
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      border-radius: 6px;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+.back-btn:hover {
+      background: var(--accent);
+      color: var(--bg-color);
+    }
+
     /* Lightbox */
     .lightbox {
       position: fixed; inset: 0; background: rgba(0,0,0,.85);
@@ -64,6 +81,7 @@
 </head>
 <body>
   <header>
+    <a href="/event_results.html" class="back-btn">All Events</a>
     <h1>Top 8 Decklists</h1>
     <p class="sub">Summer League Cup • August 2, 2025</p>
   </header>
