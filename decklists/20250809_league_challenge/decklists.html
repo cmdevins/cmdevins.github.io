@@ -1,44 +1,4 @@
-// Usage: node generate_decklist_page.js
-
-const fs = require('fs');
-const path = require('path');
-
-// === PARAMETERS ===
-const folderName = "20250809_league_challenge";
-const eventName = "August League Challenge";
-const eventDate = "August 9, 2025";
-const players = [
-  { name: "James Hitch", deck: "Okidogi/Scizor" },
-  { name: "Jeff Locke", deck: "Miraidon ex" },
-  { name: "Sachit Soni", deck: "Raging Bolt ex/Noctowl" },
-  { name: "Dylan Sabo", deck: "Gardevoir ex" }
-  ];
-
-// === HTML GENERATION ===
-function generateDecklistHTML(eventName, eventDate, players) {
-  const places = [
-    "1st Place", "2nd Place", "3rd Place", "4th Place",
-    "5th Place", "6th Place", "7th Place", "8th Place"
-  ];
-  const cards = players.map((p, i) => `
-    <article class="card">
-      <div class="thumb">
-        <a href="${i+1}.png"
-           data-player="${p.name}"
-           data-deck="${p.deck}"
-           data-rank="${places[i]}">
-          <img src="${i+1}.png" loading="lazy" />
-        </a>
-      </div>
-      <div class="info">
-        <div class="rank">${places[i]}</div>
-        <div class="player">${p.name}</div>
-        <div class="deck">${p.deck}</div>
-      </div>
-    </article>
-  `).join('\n');
-
-  return `<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -119,10 +79,77 @@ function generateDecklistHTML(eventName, eventDate, players) {
   <header>
     <a href="/event_results.html" class="back-btn">All Events</a>
     <h1>Top 8 Decklists</h1>
-    <p class="sub">${eventName} • ${eventDate}</p>
+    <p class="sub">August League Challenge • August 9, 2025</p>
   </header>
   <main class="list" aria-label="Top 8 decks">
-    ${cards}
+    
+    <article class="card">
+      <div class="thumb">
+        <a href="1.png"
+           data-player="James Hitch"
+           data-deck="Okidogi/Scizor"
+           data-rank="1st Place">
+          <img src="1.png" loading="lazy" />
+        </a>
+      </div>
+      <div class="info">
+        <div class="rank">1st Place</div>
+        <div class="player">James Hitch</div>
+        <div class="deck">Okidogi/Scizor</div>
+      </div>
+    </article>
+  
+
+    <article class="card">
+      <div class="thumb">
+        <a href="2.png"
+           data-player="Jeff Locke"
+           data-deck="Miraidon ex"
+           data-rank="2nd Place">
+          <img src="2.png" loading="lazy" />
+        </a>
+      </div>
+      <div class="info">
+        <div class="rank">2nd Place</div>
+        <div class="player">Jeff Locke</div>
+        <div class="deck">Miraidon ex</div>
+      </div>
+    </article>
+  
+
+    <article class="card">
+      <div class="thumb">
+        <a href="3.png"
+           data-player="Sachit Soni"
+           data-deck="Raging Bolt ex/Noctowl"
+           data-rank="3rd Place">
+          <img src="3.png" loading="lazy" />
+        </a>
+      </div>
+      <div class="info">
+        <div class="rank">3rd Place</div>
+        <div class="player">Sachit Soni</div>
+        <div class="deck">Raging Bolt ex/Noctowl</div>
+      </div>
+    </article>
+  
+
+    <article class="card">
+      <div class="thumb">
+        <a href="4.png"
+           data-player="Dylan Sabo"
+           data-deck="Gardevoir ex"
+           data-rank="4th Place">
+          <img src="4.png" loading="lazy" />
+        </a>
+      </div>
+      <div class="info">
+        <div class="rank">4th Place</div>
+        <div class="player">Dylan Sabo</div>
+        <div class="deck">Gardevoir ex</div>
+      </div>
+    </article>
+  
   </main>
   <div class="lightbox" id="lightbox" aria-modal="true" role="dialog" aria-label="Deck image viewer">
     <button class="lightbox__btn" id="closeBtn" aria-label="Close">✕</button>
@@ -147,7 +174,7 @@ function generateDecklistHTML(eventName, eventDate, players) {
       const rank = a.dataset.rank || '';
       const player = a.dataset.player || '';
       const deck = a.dataset.deck || '';
-      captionEl.textContent = \`\${rank} — \${player} • \${deck}\`.replace(/^ — /,'');
+      captionEl.textContent = `${rank} — ${player} • ${deck}`.replace(/^ — /,'');
       lightbox.classList.add('open');
       document.body.style.overflow = 'hidden';
     }
@@ -184,13 +211,4 @@ function generateDecklistHTML(eventName, eventDate, players) {
     });
   </script>
 </body>
-</html>`;
-}
-
-// === ENSURE FOLDER EXISTS AND WRITE TO FILE ===
-const outDir = path.join(__dirname, folderName);
-if (!fs.existsSync(outDir)) {
-  fs.mkdirSync(outDir, { recursive: true });
-}
-fs.writeFileSync(path.join(outDir, 'decklists.html'), generateDecklistHTML(eventName, eventDate, players));
-console.log('decklists.html generated in', outDir);
+</html>
