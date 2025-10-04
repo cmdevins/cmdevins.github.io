@@ -1,49 +1,9 @@
-// Usage: node generate_decklist_page.js
-
-const fs = require('fs');
-const path = require('path');
-
-// === PARAMETERS ===
-const folderName = "20251004_league_challenge";
-const eventName = "October League Challenge";
-const eventDate = "October 4, 2025";
-const players = [
-  { name: "Jeff Locke", deck: "Miraidon ex/Magneton" },
-  { name: "John Le", deck: "Miraidon ex/Eelektrik"},
-  { name: "Matthew Kish", deck: "Marnie's Grimmsnarl ex"},
-  { name: "Ben DeGarmo", deck: "Charizard ex/Dusknoir"}
-  ];
-
-// === HTML GENERATION ===
-function generateDecklistHTML(eventName, eventDate, players) {
-  const places = [
-    "1st Place", "2nd Place", "3rd Place", "4th Place",
-    "5th Place", "6th Place", "7th Place", "8th Place"
-  ];
-  const cards = players.map((p, i) => `
-    <article class="card">
-      <div class="thumb">
-        <a href="${i+1}.png"
-           data-player="${p.name}"
-           data-deck="${p.deck}"
-           data-rank="${places[i]}">
-          <img src="${i+1}.png" loading="lazy" />
-        </a>
-      </div>
-      <div class="info">
-        <div class="rank">${places[i]}</div>
-        <div class="player">${p.name}</div>
-        <div class="deck">${p.deck}</div>
-      </div>
-    </article>
-  `).join('\n');
-
-  return `<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>September League Challenge Results</title>
+  <title>October League Challenge Results</title>
   <style>
     :root {
       --radius: 12px; --max-width: 800px;
@@ -118,11 +78,78 @@ function generateDecklistHTML(eventName, eventDate, players) {
 <body>
   <header>
     <a href="/event_results.html" class="back-btn">All Events</a>
-    <h1>Top 8 Decklists</h1>
-    <p class="sub">${eventName} • ${eventDate}</p>
+    <h1>Top 4 Decklists</h1>
+    <p class="sub">October League Challenge • October 4, 2025</p>
   </header>
   <main class="list" aria-label="Top 8 decks">
-    ${cards}
+    
+    <article class="card">
+      <div class="thumb">
+        <a href="1.png"
+           data-player="Jeff Locke"
+           data-deck="Miraidon ex/Magneton"
+           data-rank="1st Place">
+          <img src="1.png" loading="lazy" />
+        </a>
+      </div>
+      <div class="info">
+        <div class="rank">1st Place</div>
+        <div class="player">Jeff Locke</div>
+        <div class="deck">Miraidon ex/Magneton</div>
+      </div>
+    </article>
+  
+
+    <article class="card">
+      <div class="thumb">
+        <a href="2.png"
+           data-player="John Le"
+           data-deck="Miraidon ex/Eelektrik"
+           data-rank="2nd Place">
+          <img src="2.png" loading="lazy" />
+        </a>
+      </div>
+      <div class="info">
+        <div class="rank">2nd Place</div>
+        <div class="player">John Le</div>
+        <div class="deck">Miraidon ex/Eelektrik</div>
+      </div>
+    </article>
+  
+
+    <article class="card">
+      <div class="thumb">
+        <a href="3.png"
+           data-player="Matthew Kish"
+           data-deck="Marnie's Grimmsnarl ex"
+           data-rank="3rd Place">
+          <img src="3.png" loading="lazy" />
+        </a>
+      </div>
+      <div class="info">
+        <div class="rank">3rd Place</div>
+        <div class="player">Matthew Kish</div>
+        <div class="deck">Marnie's Grimmsnarl ex</div>
+      </div>
+    </article>
+  
+
+    <article class="card">
+      <div class="thumb">
+        <a href="4.png"
+           data-player="Ben DeGarmo"
+           data-deck="Charizard ex/Dusknoir"
+           data-rank="4th Place">
+          <img src="4.png" loading="lazy" />
+        </a>
+      </div>
+      <div class="info">
+        <div class="rank">4th Place</div>
+        <div class="player">Ben DeGarmo</div>
+        <div class="deck">Charizard ex/Dusknoir</div>
+      </div>
+    </article>
+  
   </main>
   <div class="lightbox" id="lightbox" aria-modal="true" role="dialog" aria-label="Deck image viewer">
     <button class="lightbox__btn" id="closeBtn" aria-label="Close">✕</button>
@@ -147,7 +174,7 @@ function generateDecklistHTML(eventName, eventDate, players) {
       const rank = a.dataset.rank || '';
       const player = a.dataset.player || '';
       const deck = a.dataset.deck || '';
-      captionEl.textContent = \`\${rank} — \${player} • \${deck}\`.replace(/^ — /,'');
+      captionEl.textContent = `${rank} — ${player} • ${deck}`.replace(/^ — /,'');
       lightbox.classList.add('open');
       document.body.style.overflow = 'hidden';
     }
@@ -184,13 +211,4 @@ function generateDecklistHTML(eventName, eventDate, players) {
     });
   </script>
 </body>
-</html>`;
-}
-
-// === ENSURE FOLDER EXISTS AND WRITE TO FILE ===
-const outDir = path.join(__dirname, folderName);
-if (!fs.existsSync(outDir)) {
-  fs.mkdirSync(outDir, { recursive: true });
-}
-fs.writeFileSync(path.join(outDir, 'decklists.html'), generateDecklistHTML(eventName, eventDate, players));
-console.log('decklists.html generated in', outDir);
+</html>
