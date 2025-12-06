@@ -1,41 +1,4 @@
-// Usage: node generate_decklist_page.js
-
-const fs = require('fs');
-const path = require('path');
-
-// === PARAMETERS ===
-const folderName = "20251206_league_challenge";
-const eventName = "December League Challenge";
-const eventDate = "December 6, 2025";
-const players = [
-  { name: "Grant Walworth", deck: "Eevee Box" }
-  ];
-
-// === HTML GENERATION ===
-function generateDecklistHTML(eventName, eventDate, players) {
-  const places = [
-    "1st Place", "2nd Place", "3rd Place", "4th Place",
-    "5th Place", "6th Place", "7th Place", "8th Place"
-  ];
-  const cards = players.map((p, i) => `
-    <article class="card">
-      <div class="thumb">
-        <a href="${i+1}.png"
-           data-player="${p.name}"
-           data-deck="${p.deck}"
-           data-rank="${places[i]}">
-          <img src="${i+1}.png" loading="lazy" />
-        </a>
-      </div>
-      <div class="info">
-        <div class="rank">${places[i]}</div>
-        <div class="player">${p.name}</div>
-        <div class="deck">${p.deck}</div>
-      </div>
-    </article>
-  `).join('\n');
-
-  return `<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -116,10 +79,26 @@ function generateDecklistHTML(eventName, eventDate, players) {
   <header>
     <a href="/event_results.html" class="back-btn">All Events</a>
     <h1>Top 4 Decklists</h1>
-    <p class="sub">${eventName} • ${eventDate}</p>
+    <p class="sub">December League Challenge • December 6, 2025</p>
   </header>
   <main class="list" aria-label="Top 8 decks">
-    ${cards}
+    
+    <article class="card">
+      <div class="thumb">
+        <a href="1.png"
+           data-player="Grant Walworth"
+           data-deck="Eevee Box"
+           data-rank="1st Place">
+          <img src="1.png" loading="lazy" />
+        </a>
+      </div>
+      <div class="info">
+        <div class="rank">1st Place</div>
+        <div class="player">Grant Walworth</div>
+        <div class="deck">Eevee Box</div>
+      </div>
+    </article>
+  
   </main>
   <div class="lightbox" id="lightbox" aria-modal="true" role="dialog" aria-label="Deck image viewer">
     <button class="lightbox__btn" id="closeBtn" aria-label="Close">✕</button>
@@ -144,7 +123,7 @@ function generateDecklistHTML(eventName, eventDate, players) {
       const rank = a.dataset.rank || '';
       const player = a.dataset.player || '';
       const deck = a.dataset.deck || '';
-      captionEl.textContent = \`\${rank} — \${player} • \${deck}\`.replace(/^ — /,'');
+      captionEl.textContent = `${rank} — ${player} • ${deck}`.replace(/^ — /,'');
       lightbox.classList.add('open');
       document.body.style.overflow = 'hidden';
     }
@@ -181,13 +160,4 @@ function generateDecklistHTML(eventName, eventDate, players) {
     });
   </script>
 </body>
-</html>`;
-}
-
-// === ENSURE FOLDER EXISTS AND WRITE TO FILE ===
-const outDir = path.join(__dirname, folderName);
-if (!fs.existsSync(outDir)) {
-  fs.mkdirSync(outDir, { recursive: true });
-}
-fs.writeFileSync(path.join(outDir, 'decklists.html'), generateDecklistHTML(eventName, eventDate, players));
-console.log('decklists.html generated in', outDir);
+</html>
