@@ -1,48 +1,4 @@
-// Usage: node generate_decklist_page.js
-
-const fs = require('fs');
-const path = require('path');
-
-// === PARAMETERS ===
-const folderName = "20260411_league_cup";
-const eventName = "Spring League Cup";
-const eventDate = "April 11, 2026";
-const players = [
-  { name: "Matthew Kish", deck: "Dragapult ex/Blaziken ex" },
-  { name: "Jack Merten", deck: "Marnie's Grimmsnarl ex" },
-  { name: "Vicky Edwards", deck: "Cynthia's Garchomp ex" },
-  { name: "RJ Brahmer", deck: "Mega Diancie ex/Dusknoir" },
-  { name: "Devin Holland", deck: "Dragapult ex/Blaziken ex" },
-  { name: "Anon Cheewakarn", deck: "Dragapult ex" },
-  { name: "gwen durell", deck: "Dragapult ex" },
-  { name: "Alex Crean", deck: "Ethan's Typhlosion"} 
-  ];
-
-// === HTML GENERATION ===
-function generateDecklistHTML(eventName, eventDate, players) {
-  const places = [
-    "1st Place", "2nd Place", "3rd Place", "4th Place",
-    "5th Place", "6th Place", "7th Place", "8th Place"
-  ];
-  const cards = players.map((p, i) => `
-    <article class="card">
-      <div class="thumb">
-        <a href="${i+1}.png"
-           data-player="${p.name}"
-           data-deck="${p.deck}"
-           data-rank="${places[i]}">
-          <img src="${i+1}.png" loading="lazy" />
-        </a>
-      </div>
-      <div class="info">
-        <div class="rank">${places[i]}</div>
-        <div class="player">${p.name}</div>
-        <div class="deck">${p.deck}</div>
-      </div>
-    </article>
-  `).join('\n');
-
-  return `<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -123,10 +79,145 @@ function generateDecklistHTML(eventName, eventDate, players) {
   <header>
     <a href="/event_results.html" class="back-btn">All Events</a>
     <h1>Top 8 Decklists</h1>
-    <p class="sub">${eventName} • ${eventDate}</p>
+    <p class="sub">Spring League Cup • April 11, 2026</p>
   </header>
   <main class="list" aria-label="Top 8 decks">
-    ${cards}
+    
+    <article class="card">
+      <div class="thumb">
+        <a href="1.png"
+           data-player="Matthew Kish"
+           data-deck="Dragapult ex/Blaziken ex"
+           data-rank="1st Place">
+          <img src="1.png" loading="lazy" />
+        </a>
+      </div>
+      <div class="info">
+        <div class="rank">1st Place</div>
+        <div class="player">Matthew Kish</div>
+        <div class="deck">Dragapult ex/Blaziken ex</div>
+      </div>
+    </article>
+  
+
+    <article class="card">
+      <div class="thumb">
+        <a href="2.png"
+           data-player="Jack Merten"
+           data-deck="Marnie's Grimmsnarl ex"
+           data-rank="2nd Place">
+          <img src="2.png" loading="lazy" />
+        </a>
+      </div>
+      <div class="info">
+        <div class="rank">2nd Place</div>
+        <div class="player">Jack Merten</div>
+        <div class="deck">Marnie's Grimmsnarl ex</div>
+      </div>
+    </article>
+  
+
+    <article class="card">
+      <div class="thumb">
+        <a href="3.png"
+           data-player="Vicky Edwards"
+           data-deck="Cynthia's Garchomp ex"
+           data-rank="3rd Place">
+          <img src="3.png" loading="lazy" />
+        </a>
+      </div>
+      <div class="info">
+        <div class="rank">3rd Place</div>
+        <div class="player">Vicky Edwards</div>
+        <div class="deck">Cynthia's Garchomp ex</div>
+      </div>
+    </article>
+  
+
+    <article class="card">
+      <div class="thumb">
+        <a href="4.png"
+           data-player="RJ Brahmer"
+           data-deck="Mega Diancie ex/Dusknoir"
+           data-rank="4th Place">
+          <img src="4.png" loading="lazy" />
+        </a>
+      </div>
+      <div class="info">
+        <div class="rank">4th Place</div>
+        <div class="player">RJ Brahmer</div>
+        <div class="deck">Mega Diancie ex/Dusknoir</div>
+      </div>
+    </article>
+  
+
+    <article class="card">
+      <div class="thumb">
+        <a href="5.png"
+           data-player="Devin Holland"
+           data-deck="Dragapult ex/Blaziken ex"
+           data-rank="5th Place">
+          <img src="5.png" loading="lazy" />
+        </a>
+      </div>
+      <div class="info">
+        <div class="rank">5th Place</div>
+        <div class="player">Devin Holland</div>
+        <div class="deck">Dragapult ex/Blaziken ex</div>
+      </div>
+    </article>
+  
+
+    <article class="card">
+      <div class="thumb">
+        <a href="6.png"
+           data-player="Anon Cheewakarn"
+           data-deck="Dragapult ex"
+           data-rank="6th Place">
+          <img src="6.png" loading="lazy" />
+        </a>
+      </div>
+      <div class="info">
+        <div class="rank">6th Place</div>
+        <div class="player">Anon Cheewakarn</div>
+        <div class="deck">Dragapult ex</div>
+      </div>
+    </article>
+  
+
+    <article class="card">
+      <div class="thumb">
+        <a href="7.png"
+           data-player="gwen durell"
+           data-deck="Dragapult ex"
+           data-rank="7th Place">
+          <img src="7.png" loading="lazy" />
+        </a>
+      </div>
+      <div class="info">
+        <div class="rank">7th Place</div>
+        <div class="player">gwen durell</div>
+        <div class="deck">Dragapult ex</div>
+      </div>
+    </article>
+  
+
+    <article class="card">
+      <div class="thumb">
+        <a href="8.png"
+           data-player="Alex Crean"
+           data-deck="Ethan's Typhlosion"
+           data-rank="8th Place">
+          <img src="8.png" loading="lazy" />
+        </a>
+      </div>
+      <div class="info">
+        <div class="rank">8th Place</div>
+        <div class="player">Alex Crean</div>
+        <div class="deck">Ethan's Typhlosion</div>
+      </div>
+    </article>
+  
   </main>
   <div class="lightbox" id="lightbox" aria-modal="true" role="dialog" aria-label="Deck image viewer">
     <button class="lightbox__btn" id="closeBtn" aria-label="Close">✕</button>
@@ -151,7 +242,7 @@ function generateDecklistHTML(eventName, eventDate, players) {
       const rank = a.dataset.rank || '';
       const player = a.dataset.player || '';
       const deck = a.dataset.deck || '';
-      captionEl.textContent = \`\${rank} — \${player} • \${deck}\`.replace(/^ — /,'');
+      captionEl.textContent = `${rank} — ${player} • ${deck}`.replace(/^ — /,'');
       lightbox.classList.add('open');
       document.body.style.overflow = 'hidden';
     }
@@ -188,13 +279,4 @@ function generateDecklistHTML(eventName, eventDate, players) {
     });
   </script>
 </body>
-</html>`;
-}
-
-// === ENSURE FOLDER EXISTS AND WRITE TO FILE ===
-const outDir = path.join(__dirname, folderName);
-if (!fs.existsSync(outDir)) {
-  fs.mkdirSync(outDir, { recursive: true });
-}
-fs.writeFileSync(path.join(outDir, 'decklists.html'), generateDecklistHTML(eventName, eventDate, players));
-console.log('decklists.html generated in', outDir);
+</html>
