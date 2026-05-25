@@ -80,6 +80,10 @@
       outline: 2px solid #58a6ff; outline-offset: 2px;
     }
 
+    .btn.hidden {
+      visibility: hidden;
+    }
+
     @media (max-width: 460px) {
       .item { flex-direction: column; align-items: stretch; }
       .actions { justify-content: stretch; }
@@ -110,6 +114,17 @@
   <h1>Past Tournament Results</h1>
   <div class="list">
     <div class="item">
+      <div class="label">League Challenge &ndash; May 23, 2026</div>
+      <div class="actions">
+        <a class="btn primary" href="event_results/20260523_league_challenge.html" aria-label="Results">
+          Results
+        </a>
+        <a class="btn hidden" href="#" aria-label="Decklists">
+          Decklists
+        </a>
+      </div>
+    </div>
+    <div class="item">
       <div class="label">League Challenge &ndash; April 18, 2026</div>
       <div class="actions">
         <a class="btn primary" href="event_results/20260418_league_challenge.html" aria-label="Results">
@@ -119,7 +134,7 @@
           Decklists
         </a>
       </div>
-      </div>
+    </div>
     <div class="item">
       <div class="label">League Cup &ndash; April 11, 2026</div>
       <div class="actions">
