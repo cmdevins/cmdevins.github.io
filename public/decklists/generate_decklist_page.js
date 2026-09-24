@@ -1,7 +1,7 @@
 // Usage: node generate_decklist_page.js
 
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 
 // === PARAMETERS ===
 const folderName = "20260418_league_challenge";
@@ -11,23 +11,31 @@ const players = [
   { name: "Kenny Packala", deck: "Festival Lead" },
   { name: "Christina Korsak", deck: "Dragapult ex" },
   { name: "Kyle Tokarczyk", deck: "Dragapult ex/Blaziken ex" },
-  { name: "Jeff Locke", deck: "Marnie's Grimmsnarl ex" } 
-  ];
+  { name: "Jeff Locke", deck: "Marnie's Grimmsnarl ex" },
+];
 
 // === HTML GENERATION ===
 function generateDecklistHTML(eventName, eventDate, players) {
   const places = [
-    "1st Place", "2nd Place", "3rd Place", "4th Place",
-    "5th Place", "6th Place", "7th Place", "8th Place"
+    "1st Place",
+    "2nd Place",
+    "3rd Place",
+    "4th Place",
+    "5th Place",
+    "6th Place",
+    "7th Place",
+    "8th Place",
   ];
-  const cards = players.map((p, i) => `
+  const cards = players
+    .map(
+      (p, i) => `
     <article class="card">
       <div class="thumb">
-        <a href="${i+1}.png"
+        <a href="${i + 1}.png"
            data-player="${p.name}"
            data-deck="${p.deck}"
            data-rank="${places[i]}">
-          <img src="${i+1}.png" loading="lazy" />
+          <img src="${i + 1}.png" loading="lazy" />
         </a>
       </div>
       <div class="info">
@@ -36,7 +44,9 @@ function generateDecklistHTML(eventName, eventDate, players) {
         <div class="deck">${p.deck}</div>
       </div>
     </article>
-  `).join('\n');
+  `,
+    )
+    .join("\n");
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -192,5 +202,8 @@ const outDir = path.join(__dirname, folderName);
 if (!fs.existsSync(outDir)) {
   fs.mkdirSync(outDir, { recursive: true });
 }
-fs.writeFileSync(path.join(outDir, 'decklists.html'), generateDecklistHTML(eventName, eventDate, players));
-console.log('decklists.html generated in', outDir);
+fs.writeFileSync(
+  path.join(outDir, "decklists.html"),
+  generateDecklistHTML(eventName, eventDate, players),
+);
+console.log("decklists.html generated in", outDir);
